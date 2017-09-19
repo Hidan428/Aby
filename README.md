@@ -1,8 +1,10 @@
-[![Build Status](https://travis-ci.org/Ebatsin/Aby.svg?branch=master)](https://travis-ci.org/Ebatsin/Aby)
+[![Build Status](https://travis-ci.org/Ebatsin/Aby.svg?branch=dev)](https://travis-ci.org/Ebatsin/Aby)
 
-# Aby
+# Aby (dev)
 
 Virtual reality labyrinth game
+
+/!\ This branch is not a stable branch.
 
 ## Authors
 
