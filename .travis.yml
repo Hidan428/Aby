@@ -1,5 +1,5 @@
 language: generic
-os: osx
+
 matrix:
   include:
     - os: linux
@@ -13,11 +13,22 @@ matrix:
             - ubuntu-toolchain-r-test
     - os: linux
       env: COMPILER_NAME=clang CXX=clang++-3.8
+      install:
+        - export CXXFLAGS="-stdlib=libc++"
+          svn co --quiet http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
+          cd libcxx/lib && bash buildit
+          sudo cp ./libc++.so.1.0 /usr/lib/
+          sudo mkdir /usr/include/c++/v1
+          cd .. && sudo cp - r include/* /usr/include/c++/v1
+          cd /usr/lib && sudo ln -sf libc++.so.1.0 libc++.so
+          sudo ln -sf libc++.so.1.0 libc++.so.1 && cd $cwd
       addons:
         apt:
           packages:
             - clang-3.8
           sources: *sources
-script:
+    - os: osx
+      osx_image: xcode9
+      script:
   - cmake .
   - cmake --build . -- -j2
