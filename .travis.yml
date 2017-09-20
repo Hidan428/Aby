@@ -18,7 +18,7 @@ matrix:
         - svn co --quiet http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
         - mkdir build
         - cd build
-        - cmake libcxx/
+        - cmake ../libcxx/
         - make
         - cd lib
         - sudo cp ./libc++.so.1.0 /usr/lib/
