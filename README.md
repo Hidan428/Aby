@@ -8,7 +8,7 @@
 * **Aurelia Binetti** - *initial work* - [Aurelia2b](https://github.com/Aurelia2b)
 * **Bastien Philip** - *initial work* - [ebatsin](https://github.com/ebatsin)
 * **Kevin Wilst** - *initial work* - [Hidan428](https://github.com/Hidan428)
-* **Lucile Souche** - *initial work*
+* **Lucile Souche** - *initial work* - [Luciole13](https://github.com/Luciole13)
 * **Morgane Alonso** - *initial work* - [Niouby](https://github.com/niouby)
 * **Valentin Bissuel** - *initial work* - [valbi](https://github.com/valbi)
 
