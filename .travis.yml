@@ -1,5 +1,38 @@
-language: generic
+language: cpp
+sudo: false
 
+cache:
+  directories:
+    - ${TRAVIS_BUILD_DIR}/deps/cmake
+    - ${TRAVIS_BUILD_DIR}/deps/llvm-3.5.2/install
+    - ${TRAVIS_BUILD_DIR}/deps/llvm-3.6.2/install
+    - ${TRAVIS_BUILD_DIR}/deps/llvm-3.7.1/install
+    - ${TRAVIS_BUILD_DIR}/deps/llvm-3.8.1/install
+    - ${TRAVIS_BUILD_DIR}/deps/llvm-3.9.1/install
+
+
+
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode8
+      compiler: clang
+    - env: CLANG_VERSION=3.8
+      os: linux
+      addons:
+        apt:
+          packages:
+            - clang-3.8
+            - g++-5
+          sources: &sources
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.8
+    - env: GCC_VERSION=5
+      os: linux
+      addons:
+        apt:
+          packages: g++-5
+          sources: *sources
 
 install:
   - if [[ -n "$CLANG_VERSION" ]]; then export CXX=clang++-$CLANG_VERSION CC=clang-$CLANG_VERSION; fi
@@ -48,27 +81,6 @@ install:
       export LDFLAGS="-L ${LLVM_ROOT}/install/lib -lc++ -lc++abi"
       export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${LLVM_ROOT}/install/lib"
     fi
-
-matrix:
-  include:
-    - os: linux
-      env: COMPILER_NAME=gcc CXX=g++-5
-      addons:
-        apt:
-          packages:
-            - g++-5
-          sources: &sources
-            - llvm-toolchain-precise-3.8
-            - ubuntu-toolchain-r-test
-    - os: linux
-      env: COMPILER_NAME=clang CXX=clang++-3.8
-      addons:
-        apt:
-          packages:
-            - clang-3.8
-          sources: *sources
-    - os: osx
-      osx_image: xcode9
 
 script:
   - cmake .
