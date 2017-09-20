@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.2)
 
 option(BUILD_GAME "Build the game" ON)
 option(BUILD_DOCS "Build the documentation" OFF)
