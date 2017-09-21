@@ -92,11 +92,12 @@ install:
         travis_retry wget https://github.com/glfw/glfw/releases/download/3.2.1/glfw-3.2.1.zip -P ${DEPS_DIR}/glfw3        
         cd ${DEPS_DIR}/glfw3
         unzip ${DEPS_DIR}/glfw3/glfw-3.2.1.zip
-        cd ${DEPS_DIR}/glfw3/glfw-3.2.1
-        cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON
-        make
-        sudo make install
       fi
+      cd ${DEPS_DIR}/glfw3/glfw-3.2.1
+      cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON
+      make
+      sudo make install
+    fi
   - |
     if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
       brew install homebrew/versions/glfw3
