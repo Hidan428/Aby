@@ -2,6 +2,48 @@
 
 [![Build Status](https://travis-ci.org/Ebatsin/Aby.svg)](https://travis-ci.org/Ebatsin/Aby)
 
+## Building the project
+
+The following instructions will guide you through the build of the project.
+
+### Required libraries
+
+- Assimp
+- GLFW
+- GLM
+- OpenCV
+- OpenGL (v3.3 core profile required)
+- SOIL
+
+### Optional libraries & programs
+
+- Google Test (only used when tests are runned)
+- doxygen (only used when generating the documentation)
+
+### Building
+
+This project requires CMake to build the project. The project is tested on linux, using Clang and GCC and on OSX, using clang.
+
+To build it on linux or mac, use the following commands : 
+
+```bash
+git clone https://github.com/Ebatsin/Aby.git
+mkdir Aby/build
+cd Aby/build
+cmake ../ # you can build the tests and the doc by enabling the options
+make
+```
+
+### Start the program
+
+In the build directory, simply run the generated executable
+
+```bash
+./Aby
+```
+
+
+
 ## Authors
 
 * **Alexis Ben Miloud--Josselin** - *initial work* - [Fougasse](https://github.com/Fougasse)
