@@ -16,13 +16,16 @@ matrix:
       os: linux
       addons:
         apt:
-          packages:
+          packages: &packages
             - clang-3.8
             - g++-5
             - libglfw3-dev
-            - libosmesa6-dev
-            - libegl1-mesa-dev
             - libxrandr-dev
+            - libxinerama-dev
+            - libxcursor-dev
+            - libxi-dev
+            - libglew-dev
+            - libglm-dev
           sources: &sources
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.8
@@ -31,7 +34,7 @@ matrix:
       os: linux
       addons:
         apt:
-          packages: g++-5
+          packages: *packages
           sources: *sources
     - os: osx
       osx_image: xcode9
