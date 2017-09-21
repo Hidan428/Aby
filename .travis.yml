@@ -19,6 +19,9 @@ matrix:
           packages:
             - clang-3.8
             - g++-5
+            - libglfw3-dev
+            - libosmesa6-dev
+            - libegl1-mesa-dev
           sources: &sources
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.8
