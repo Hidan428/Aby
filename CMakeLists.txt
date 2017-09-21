@@ -17,15 +17,27 @@ if(BUILD_GAME)
 	                 src/window.cpp
 	                 src/error.cpp)
 
-	include_directories(${PROJECT_SOURCE_DIR}/include)
+	add_executable(aby ${SOURCE_FILES})
 
 	find_package(PkgConfig)
-	pkg_search_module(GL REQUIRED glu)
 	pkg_search_module(GLEW REQUIRED glew)
 	pkg_search_module(GLFW REQUIRED glfw3)
 
-	add_executable(aby ${SOURCE_FILES})
-	target_link_libraries(aby ${GL_LIBRARIES} ${GLEW_STATIC_LIBRARIES} ${GLFW_STATIC_LIBRARIES})
+	if(UNIX)
+		pkg_search_module(GL REQUIRED glu)
+
+		target_include_directories(aby PUBLIC ${PROJECT_SOURCE_DIR}/include)
+	endif()
+
+	if(APPLE)		
+		target_include_directories(aby PUBLIC ${PROJECT_SOURCE_DIR}/include System/Library/Frameworks)
+		find_library(COCOA_LIBRARY Cocoa)
+		find_library(OpenGL_LIBRARY OpenGL)
+	
+		set(OSX_LIBS ${COCOA_LIBRARY} ${OpenGL_LIBRARY})
+	endif()
+
+	target_link_libraries(aby ${OSX_LIBS} ${GL_LIBRARIES} ${GLEW_STATIC_LIBRARIES} ${GLFW_STATIC_LIBRARIES})
 	target_include_directories(aby PUBLIC ${GL_INCLUDE_DIRS})
 	target_compile_options(aby PUBLIC ${GLEW_CFLAGS_OTHER} ${GLFW3_CFLAGS_OTHER} ${GL_CFLAGS_OTHER})
 endif()
