@@ -13,11 +13,21 @@ if(BUILD_GAME)
 	set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
 	set(CMAKE_CXX_FLAGS "-Wall -pedantic")
 
-	set(SOURCE_FILES src/main.cpp)
+	set(SOURCE_FILES src/main.cpp
+	                 src/window.cpp
+	                 src/error.cpp)
 
 	include_directories(${PROJECT_SOURCE_DIR}/include)
 
+	find_package(PkgConfig)
+	pkg_search_module(GL REQUIRED glu)
+	pkg_search_module(GLEW REQUIRED glew)
+	pkg_search_module(GLFW REQUIRED glfw3)
+
 	add_executable(aby ${SOURCE_FILES})
+	target_link_libraries(aby ${GL_LIBRARIES} ${GLEW_STATIC_LIBRARIES} ${GLFW_STATIC_LIBRARIES})
+	target_include_directories(aby PUBLIC ${GL_INCLUDE_DIRS})
+	target_compile_options(aby PUBLIC ${GLEW_CFLAGS_OTHER} ${GLFW3_CFLAGS_OTHER} ${GL_CFLAGS_OTHER})
 endif()
 
 	
