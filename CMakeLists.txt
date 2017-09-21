@@ -23,7 +23,7 @@ if(BUILD_GAME)
 	pkg_search_module(GLEW REQUIRED glew)
 	pkg_search_module(GLFW REQUIRED glfw3)
 
-	if(UNIX)
+	if(UNIX AND NOT APPLE)
 		pkg_search_module(GL REQUIRED glu)
 
 		target_include_directories(aby PUBLIC ${PROJECT_SOURCE_DIR}/include)
