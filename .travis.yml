@@ -25,7 +25,7 @@ matrix:
           sources: &sources
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.8
-            - sourceline: 'deb-src http://ppa.launchpad.net/keithw/glfw3/ubuntu trusty main'
+            - sourceline: 'deb http://ppa.launchpad.net/keithw/glfw3/ubuntu trusty main'
     - env: GCC_VERSION=5 BUILD_TYPE=Release
       os: linux
       addons:
