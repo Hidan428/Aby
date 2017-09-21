@@ -101,6 +101,7 @@ install:
   - |
     if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
       brew install homebrew/versions/glfw3
+      brew install glew
     fi
 
 before_script:
