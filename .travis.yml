@@ -83,7 +83,7 @@ install:
       export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${LLVM_ROOT}/install/lib"
     fi
   ############################################################################
-  # [linux]: Install glfw3
+  # Install glfw3
   ############################################################################
   - |
     if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
@@ -97,6 +97,9 @@ install:
         make
         sudo make install
       fi
+  - |
+    if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
+      brew install homebrew/versions/glfw3
     fi
 
 before_script:
