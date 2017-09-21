@@ -22,6 +22,7 @@ matrix:
             - libglfw3-dev
             - libosmesa6-dev
             - libegl1-mesa-dev
+            - libxrandr-dev
           sources: &sources
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.8
